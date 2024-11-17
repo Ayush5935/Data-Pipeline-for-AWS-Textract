@@ -1,6 +1,6 @@
 #Create two S3 bucket with name - docuploadtextractbucket and textractresultbucket | Region - us-west-2
 #Add SQS Trigger to this lambda (Use Boto3 code to create SQS and SNS)
-#This lambda Configuration - 1GB/1024MB Memory and Storage | Timeout - 15 min 0 Sec
+#This lambda Configuration - 1GB/1024MB Memory and Storage | Timeout - 15 min 0 Sec | Lambda Version - Python 3.8,3.9
 # Create and add trp layer to this lambda (Get Zio from this Git repo) 
 
 ################################################################# UPDATED CODE ###################################################
