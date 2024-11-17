@@ -1,6 +1,6 @@
 #Create two S3 bucket with name - docuploadtextractbucket and textractresultbucket | Region - us-west-2
 #Add S3 Trigger to this lambda 
-#This lambda Configuration - 1GB/1024MB Memory and Storage | Timeout - 15 min 0 Sec
+#This lambda Configuration - 1GB/1024MB Memory and Storage | Timeout - 15 min 0 Sec | Lambda Version - Python 3.8,3.9
 
 from logging import exception
 import boto3
