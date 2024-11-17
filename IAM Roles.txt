@@ -1,0 +1,108 @@
+AmazonS3FullAccess                     (AWS Managed)
+AmazonS3ObjectLambdaExecutionRolePolicy (AWS Managed)
+AmazonSNSFullAccess                    (AWS Managed)
+AmazonTextractFullAccess               (AWS Managed)
+AmazonTextractServiceRole             (AWS Managed)
+AWSLambda_FullAccess                  (AWS Managed)
+AWSLambdaBasicExecutionRole           (AWS Managed)
+AWSLambdaBasicExecutionRole-ef08c10b-cb51-4c6e-b382-1d915d2e6528 (Customer Managed)
+AWSLambdaExecute                      (AWS Managed)
+AWSLambdaSQSQueueExecutionRole        (AWS Managed)
+CloudWatch                            (Customer Inline)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+AWSLambdaBasicExecutionRole-ef08c10b-cb51-4c6e-b382-1d915d2e6528 (Customer Managed)
+
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "logs:CreateLogGroup",
+            "Resource": "arn:aws:logs:us-west-2:307946643930:*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": [
+                "arn:aws:logs:us-west-2:307946643930:log-group:/aws/lambda/InvokeTextract:*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:DescribeLogGroups",
+                "logs:DescribeLogStreams",
+                "logs:GetLogEvents"
+            ],
+            "Resource": [
+                "arn:aws:logs:us-west-2:307946643930:log-group:/aws/lambda/InvokeTextract:*"
+            ]
+        }
+    ]
+}
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CloudWatch
+
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Effect": "Allow",
+			"Action": "logs:CreateLogGroup",
+			"Resource": "arn:aws:logs:us-west-2:307946643930:*"
+		},
+		{
+			"Effect": "Allow",
+			"Action": [
+				"logs:CreateLogStream",
+				"logs:PutLogEvents"
+			],
+			"Resource": [
+				"arn:aws:logs:us-west-2:307946643930:log-group:/aws/*",
+				"arn:aws:logs:us-west-2:307946643930:log-group:/aws/lambda/Invokerlambda:*"
+			]
+		},
+		{
+			"Effect": "Allow",
+			"Action": [
+				"logs:DescribeLogGroups",
+				"logs:DescribeLogStreams",
+				"logs:GetLogEvents"
+			],
+			"Resource": [
+				"arn:aws:logs:us-west-2:307946643930:log-group:/aws/lambda/InvokeTextract:*",
+				"arn:aws:logs:us-west-2:307946643930:log-group:/aws/lambda/Invokerlambda:*",
+				"arn:aws:logs:us-west-2:307946643930:log-group:/aws/*"
+			]
+		}
+	]
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Trust Relationships 
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "Service": [
+                    "textract.amazonaws.com",
+                    "lambda.amazonaws.com"
+                ]
+            },
+            "Action": "sts:AssumeRole"
+        }
+    ]
+}
